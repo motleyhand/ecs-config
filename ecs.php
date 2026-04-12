@@ -7,6 +7,7 @@ use PHP_CodeSniffer\Standards\Generic\Sniffs\Metrics\NestingLevelSniff;
 use PHP_CodeSniffer\Standards\Generic\Sniffs\NamingConventions\UpperCaseConstantNameSniff;
 use PHP_CodeSniffer\Standards\Squiz\Sniffs\Commenting\ClassCommentSniff;
 use PhpCsFixer\Fixer\Alias\ModernizeStrposFixer;
+use PhpCsFixer\Fixer\AttributeNotation\AttributeEmptyParenthesesFixer;
 use PhpCsFixer\Fixer\Basic\NoTrailingCommaInSinglelineFixer;
 use PhpCsFixer\Fixer\CastNotation\ModernizeTypesCastingFixer;
 use PhpCsFixer\Fixer\ClassNotation\ClassAttributesSeparationFixer;
@@ -14,7 +15,6 @@ use PhpCsFixer\Fixer\ClassNotation\OrderedClassElementsFixer;
 use PhpCsFixer\Fixer\Comment\SingleLineCommentSpacingFixer;
 use PhpCsFixer\Fixer\ControlStructure\NoUselessElseFixer;
 use PhpCsFixer\Fixer\ControlStructure\TrailingCommaInMultilineFixer;
-use PhpCsFixer\Fixer\FunctionNotation\FunctionTypehintSpaceFixer;
 use PhpCsFixer\Fixer\FunctionNotation\NativeFunctionInvocationFixer;
 use PhpCsFixer\Fixer\FunctionNotation\NoUselessSprintfFixer;
 use PhpCsFixer\Fixer\FunctionNotation\NullableTypeDeclarationForDefaultNullValueFixer;
@@ -54,42 +54,42 @@ return static function (ECSConfig $ecsConfig): void {
 
     $ecsConfig->rules([
         ArrayIndentationFixer::class,
+        AttributeEmptyParenthesesFixer::class,
         BlankLineBeforeStatementFixer::class,
         ClassCommentSniff::class,
         CyclomaticComplexitySniff::class,
         DeclareStrictTypesFixer::class,
+        ExplicitStringVariableFixer::class,
         FullyQualifiedStrictTypesFixer::class,
-        FunctionTypehintSpaceFixer::class,
+        GetClassToClassKeywordFixer::class,
         GlobalNamespaceImportFixer::class,
         HeredocIndentationFixer::class,
         IsNullFixer::class,
         LineLengthFixer::class,
         MethodChainingIndentationFixer::class,
+        ModernizeStrposFixer::class,
+        ModernizeTypesCastingFixer::class,
         NativeFunctionInvocationFixer::class,
         NestingLevelSniff::class,
         NoEmptyPhpdocFixer::class,
         NoExtraBlankLinesFixer::class,
         NoTrailingCommaInSinglelineFixer::class,
-        NullableTypeDeclarationForDefaultNullValueFixer::class,
-        ObjectOperatorWithoutWhitespaceFixer::class,
-        PhpdocIndentFixer::class,
-        PhpdocTrimFixer::class,
-        SingleLineCommentSpacingFixer::class,
-        StandaloneLinePromotedPropertyFixer::class,
-        UseArrowFunctionsFixer::class,
-        StaticLambdaFixer::class,
-        SingleQuoteFixer::class,
-        UpperCaseConstantNameSniff::class,
-        ModernizeTypesCastingFixer::class,
-        ExplicitStringVariableFixer::class,
-        RemoveUselessDefaultCommentFixer::class,
         NoUselessElseFixer::class,
         NoUselessNullsafeOperatorFixer::class,
         NoUselessReturnFixer::class,
         NoUselessSprintfFixer::class,
+        NullableTypeDeclarationForDefaultNullValueFixer::class,
+        ObjectOperatorWithoutWhitespaceFixer::class,
+        PhpdocIndentFixer::class,
         PhpdocNoUselessInheritdocFixer::class,
-        ModernizeStrposFixer::class,
-        GetClassToClassKeywordFixer::class,
+        PhpdocTrimFixer::class,
+        RemoveUselessDefaultCommentFixer::class,
+        SingleLineCommentSpacingFixer::class,
+        SingleQuoteFixer::class,
+        StandaloneLinePromotedPropertyFixer::class,
+        StaticLambdaFixer::class,
+        UpperCaseConstantNameSniff::class,
+        UseArrowFunctionsFixer::class,
     ]);
 
     $ecsConfig->ruleWithConfiguration(MultilineWhitespaceBeforeSemicolonsFixer::class, [
