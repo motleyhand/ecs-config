@@ -47,12 +47,10 @@ use Symplify\CodingStandard\Fixer\Spacing\StandaloneLinePromotedPropertyFixer;
 use Symplify\EasyCodingStandard\Config\ECSConfig;
 use Symplify\EasyCodingStandard\ValueObject\Set\SetList;
 
-return static function (ECSConfig $ecsConfig): void {
-    $ecsConfig->parallel();
-
-    $ecsConfig->sets([SetList::PSR_12, SetList::CLEAN_CODE, SetList::DOCTRINE_ANNOTATIONS]);
-
-    $ecsConfig->rules([
+return ECSConfig::configure()
+    ->withParallel()
+    ->withSets([SetList::PSR_12, SetList::CLEAN_CODE, SetList::DOCTRINE_ANNOTATIONS])
+    ->withRules([
         ArrayIndentationFixer::class,
         AttributeEmptyParenthesesFixer::class,
         BlankLineBeforeStatementFixer::class,
@@ -90,24 +88,23 @@ return static function (ECSConfig $ecsConfig): void {
         StaticLambdaFixer::class,
         UpperCaseConstantNameSniff::class,
         UseArrowFunctionsFixer::class,
-    ]);
-
-    $ecsConfig->ruleWithConfiguration(MultilineWhitespaceBeforeSemicolonsFixer::class, [
+    ])
+    ->withConfiguredRule(MultilineWhitespaceBeforeSemicolonsFixer::class, [
         'strategy' => 'new_line_for_chained_calls',
-    ]);
-    $ecsConfig->ruleWithConfiguration(TrailingCommaInMultilineFixer::class, [
+    ])
+    ->withConfiguredRule(TrailingCommaInMultilineFixer::class, [
         'elements' => ['arrays', 'arguments', 'parameters', 'match'],
-    ]);
-    $ecsConfig->ruleWithConfiguration(OrderedClassElementsFixer::class, [
+    ])
+    ->withConfiguredRule(OrderedClassElementsFixer::class, [
         'order' => ['use_trait', 'constant', 'case', 'property', 'construct', 'destruct', 'magic', 'method'],
-    ]);
-    $ecsConfig->ruleWithConfiguration(ClassAttributesSeparationFixer::class, [
+    ])
+    ->withConfiguredRule(ClassAttributesSeparationFixer::class, [
         'elements' => [
             'method' => 'one',
         ],
-    ]);
-    $ecsConfig->ruleWithConfiguration(NoSuperfluousPhpdocTagsFixer::class, [
+    ])
+    ->withConfiguredRule(NoSuperfluousPhpdocTagsFixer::class, [
         'allow_mixed' => true,
         'remove_inheritdoc' => true,
-    ]);
-};
+    ])
+;
